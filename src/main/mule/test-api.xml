@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6b2c82de-452c-4e9d-91c1-30dbbe60bf1c" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="test-apiFlow" doc:id="e618552e-371c-43ad-b2b5-f6628c6770bc" >
+		<http:listener doc:name="Listener" doc:id="910ca7f5-80c5-4bbf-952d-971624b14c31" config-ref="HTTP_Listener_config" path="/Account"/>
+		<set-payload value="Venkat's Main Account" doc:name="Set Payload" doc:id="bfd43593-8e86-4311-956c-3f19bb56e9d8" />
+		<logger level="INFO" doc:name="Logger" doc:id="bbdb55c2-2281-44af-b5c5-a7bf1eb1cf8f" message="#[payload]"/>
+	</flow>
+</mule>
